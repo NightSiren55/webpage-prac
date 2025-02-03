@@ -1,6 +1,7 @@
 <html>
     <head>
-        <link rel="stylesheet" type="text/css" href="css/styles.css">
+        <script tpye="text/javascript" src="js/formdata.js" defer></script>
+        <link rel="stylesheet" type="text/css" href="css/styles2.css">
         <title>
             The French Connection
         </title>
@@ -27,17 +28,33 @@
         Contact Us: We're available Monday through Friday!
         </h2>
 </div>
-<form id="contact-form">
-        <label for="First Name">First Name:</label><br>
-        <input type="text" id="Fname" name="name" required><br>
-        <label for="LastName">Last Name:</label><br>
-        <input type="text" id="LName" name="LastName" required><br>
-        <label for="Phone Number">Phone Number:</label><br>
-        <input type="text" id="PhoneNum" name="Phone" required></input><br>
-        <label for="User Name">User Name:</label><br>
-        <input type="text" id="UName" name="UserName" required><br>
-        <button type="submit">Submit</button><br>
-</form>
+<div class="container1" id="signup">
+    <h2 class="form-title">Register</h2>
+    <form id="contact-form">
+        <div class="form-group">
+            <label for="First Name">First Name:</label><br>
+            <input type="text" id="Fname" name="name" placeholder="First Name" required><br>
+        </div>
+        <div class="form-group">
+            <label for="LastName">Last Name:</label><br>
+            <input type="text" id="LName" name="LastName" placeholder="Last Name" required><br>
+        </div>
+        <div class="form-group">    
+            <label for="Phone Number">Phone Number:</label><br>
+            <input type="text" id="PhoneNum" name="Phone" placeholder="Phone Number" required></input><br>
+        </div>
+        <div class="form-group">
+            <label for="User Name">User Name:</label><br>
+            <input type="text" id="UName" name="UserName" placeholder="User Name" required><br>
+        </div>
+        <div class="form-group">    
+            <label for="Password">Password:</label><br>
+            <input type="password" id="password" name="Password" placeholder="Password" required><br>
+        </div>
+            <button type="submit" class="btn" value="Sign Up" name="signUp">Sign Up</button><br>
+    </form>
+</div>
+
 <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 <script>
 (function() {
@@ -50,11 +67,13 @@ document.getElementById('contact-form').addEventListener('submit', function(even
     var lastName = document.getElementById("LName").value;
     var phone = document.getElementById("PhoneNum").value;
     var userName = document.getElementById("UName").value;
+    var password = document.getElementById("password").value;
     var templateParams = {
         from_name: name,
         from_lastname: lastName,
         from_phone: phone,
         from_username: userName,
+        from_password: password,
         to_name: "The French Connection"
         
     };
@@ -65,11 +84,12 @@ document.getElementById('contact-form').addEventListener('submit', function(even
         .then(function(response) {
             console.log('SUCCESS!', response.status, response.text);
             alert('Message sent successfully!');
+            window.location.href = "login.html"; // Redirect to login.html on success
         }, function(error) {
             console.log('FAILED...', error);
             alert('Message failed to send.');
         });
-});
+})
 </script>
 <div id="googleMap" style="text-align: center;">
     <h1 class="maptxt">
